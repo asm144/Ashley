@@ -54,10 +54,10 @@
 &CENTER_COORDINATES
 &END CENTER_COORDINATES
     &END TOPOLOGY
-    &KIND Zr
-      ELEMENT   Zr
-      BASIS_SET DZVP-MOLOPT-SR-GTH-q12
-      POTENTIAL GTH-PBE-q12
+    &KIND Zr # Change to either Au or Cu depending on calc
+      ELEMENT   Zr # Change to either Au or Cu depending on calc
+      BASIS_SET DZVP-MOLOPT-SR-GTH-q12 # Change this number q12 depending on calc
+      POTENTIAL GTH-PBE-q12 # Change this number q12 depending on calc
     &END KIND
   &END SUBSYS
 &END FORCE_EVAL
