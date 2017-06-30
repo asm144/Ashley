@@ -1,0 +1,41 @@
+#! /usr/bin/env python
+# Reads in .xyz files and moves the atoms to the center of a box (for cp2k)
+# Usage like: "center *.xyz"
+import numpy as np
+from ase.io import read,write
+import os
+import sys
+
+
+# a defines the dimensions of the box, a=40 gives the center of a 40x40x40 box
+a=40
+b=a
+c=a
+
+filetype='.xyz'
+boxsize=np.array([a,b,c])
+
+if len(sys.argv) <1:
+	print 'Error: Not enough arguments passed!'
+	sys.exit()
+
+# Iterate over all .xyz files passed to command
+
+for item in range(1,len(sys.argv)):
+	# Extract name from list of arguments passed
+        molecule=sys.argv[item]
+	# create a new name from the previous name with {oldname}new.xyz
+	newname=molecule.replace(filetype,'')+'new'+filetype
+	# Read in the moleucles
+        atoms1=read(molecule)
+	# Get the positions of all the atoms
+	posits=atoms1.get_positions()
+	# Change into three vectors of xs,ys,and zs, instead of vectors of x,y,z for every atom
+	xyz=posits.transpose()
+	# Set the centerpoint to be the centerpoint of the desired box, 
+	# calculate the vector of displacement from the average x,y, and z coordinates of the molecule
+	scaling=boxsize/2-xyz.mean(1)
+	# Set the new positions at the vector of displacment + the original positions
+	atoms1.set_positions(posits+scaling)
+	# Write out the new .xyz file!
+	write(newname,atoms1)

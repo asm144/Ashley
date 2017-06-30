@@ -1,0 +1,11 @@
+0. Edit "center" code to scale the interatomic distances to what they should
+be - move the "center" code to your scripts file when ready (upload to github)
+1. Make a new directory for every .xyz file
+2. Use the center coordinates to rescale the interatomic distances and move
+the atoms to the center of a 40x40x40 box
+3. Copy the .inp file to the directory and make sure the method (Geometry
+optimization, PBE, Temp=700, correct atom type and Basis Set name) is correct.
+4. Copy the cp2k.sl file to the directory and make sure it works with .xyz
+file and .inp file names you have written.
+5. Submit the job to slurm using "sbatch cp2k.sl"
+6. Check on the jobs using "squeue -M mpi | grep asm144"
