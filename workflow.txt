@@ -1,5 +1,10 @@
 0. Edit "center" code to scale the interatomic distances to what they should
 be - move the "center" code to your scripts file when ready (upload to github)
+
+See ReadMe.txt in zipped "xyz_files.zip" for correct interatomic distances,
+adjust the "center" code to be able to adjust interatomic distances to this
+correct value from whatever they are.
+
 1. Make a new directory for every .xyz file
 2. Use the center coordinates to rescale the interatomic distances and move
 the atoms to the center of a 40x40x40 box
